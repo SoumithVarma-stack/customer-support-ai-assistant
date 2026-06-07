@@ -58,5 +58,23 @@
     "feedback": "out of context answer",
     "status": "rejected",
     "timestamp": "2026-06-07T19:06:21.579Z"
+  },
+  {
+    "id": "audit_1780862902563",
+    "customerQuery": "hi, can you please help me with the tracking details of my order",
+    "originalDraft": "Hi, I'm sorry for the trouble with your order. Tracking updates from the logistics partner can sometimes take time to appear because carrier scans may be delayed. Please check the tracking link in your shipping email or your order history page for the latest status. If the tracking still does not update or the delivery remains delayed, our support team can review the shipment details and help with the next step.",
+    "finalResponse": "Hi, I'm sorry for the trouble with your order. Tracking updates from the logistics partner can sometimes take time to appear because carrier scans may be delayed. Please check the tracking link in your shipping email or your order history page for the latest status.",
+    "feedback": "",
+    "status": "approved",
+    "timestamp": "2026-06-07T20:08:22.563Z"
+  },
+  {
+    "id": "audit_1780863365855",
+    "customerQuery": "Hi",
+    "originalDraft": "Hi, thanks for reaching out. How can our support team help you today?",
+    "finalResponse": "Hi, thanks for reaching out. How can our support team help you today?",
+    "feedback": "",
+    "status": "approved",
+    "timestamp": "2026-06-07T20:16:05.855Z"
   }
 ]

@@ -1,6 +1,6 @@
 # Assumptions
 
-These are the main assumptions for this proof of concept.
+These are the main assumptions for this POC.
 
 
 ## Local Storage

@@ -6,5 +6,57 @@
     "feedback": "Draft was too generic.",
     "status": "rejected",
     "timestamp": "2026-06-07T16:55:51.555Z"
+  },
+  {
+    "id": "audit_1780856073861",
+    "customerQuery": "my order is delayed from logistics partner",
+    "originalDraft": "Hi, I'm sorry for the trouble with your order. Tracking updates from the logistics partner can sometimes take time to appear because carrier scans may be delayed. Please check the tracking link in your shipping email or your order history page for the latest status. If the tracking still does not update or the delivery remains delayed, our support team can review the shipment details and help with the next step.",
+    "finalResponse": "Hi, I'm sorry for the trouble with your order. Tracking updates from the logistics partner can sometimes take time to appear because carrier scans may be delayed. \nPlease check the tracking link in your shipping email or your order history page for the latest status. If the tracking still does not update or the delivery remains delayed, our support team can review the shipment details and help with the next step.",
+    "feedback": "",
+    "status": "approved",
+    "timestamp": "2026-06-07T18:14:33.861Z"
+  },
+  {
+    "id": "audit_1780858184290",
+    "customerQuery": "how long will it take to react",
+    "originalDraft": "Hi, I'm sorry for the trouble with your order. Tracking updates from the logistics partner can sometimes take time to appear because carrier scans may be delayed. Please check the tracking link in your shipping email or your order history page for the latest status. If the tracking still does not update or the delivery remains delayed, our support team can review the shipment details and help with the next step.",
+    "feedback": "out of context",
+    "status": "rejected",
+    "timestamp": "2026-06-07T18:49:44.290Z"
+  },
+  {
+    "id": "audit_1780858421702",
+    "customerQuery": "hello",
+    "originalDraft": "Hi, thanks for reaching out. How can our support team help you today?",
+    "finalResponse": "Hi, thanks for reaching out. How can our support team help you today?",
+    "feedback": "",
+    "status": "approved",
+    "timestamp": "2026-06-07T18:53:41.702Z"
+  },
+  {
+    "id": "audit_1780858761350",
+    "customerQuery": "hi",
+    "originalDraft": "Hi, thanks for reaching out. How can our support team help you today?",
+    "finalResponse": "Hi, thanks for reaching out. How can our support team help you today?",
+    "feedback": "",
+    "status": "approved",
+    "timestamp": "2026-06-07T18:59:21.350Z"
+  },
+  {
+    "id": "audit_1780859128907",
+    "customerQuery": "my order is getting delayed",
+    "originalDraft": "Hi, I'm sorry for the trouble with your order. Tracking updates from the logistics partner can sometimes take time to appear because carrier scans may be delayed. Please check the tracking link in your shipping email or your order history page for the latest status. If the tracking still does not update or the delivery remains delayed, our support team can review the shipment details and help with the next step.",
+    "finalResponse": "Hi, I'm sorry for the trouble with your order. Tracking updates from the logistics partner can sometimes take time to appear because carrier scans may be delayed. Please check the tracking link in your shipping email or your order history page for the latest status. If the tracking still does not update or the delivery remains delayed, our support team can review the shipment details and help with the next step.",
+    "feedback": "",
+    "status": "approved",
+    "timestamp": "2026-06-07T19:05:28.907Z"
+  },
+  {
+    "id": "audit_1780859181579",
+    "customerQuery": "please let me know when will the new stock comes for this item in inventory",
+    "originalDraft": "Hi, I'm sorry for the trouble with your order. Tracking updates from the logistics partner can sometimes take time to appear because carrier scans may be delayed. Please check the tracking link in your shipping email or your order history page for the latest status. If the tracking still does not update or the delivery remains delayed, our support team can review the shipment details and help with the next step.",
+    "feedback": "out of context answer",
+    "status": "rejected",
+    "timestamp": "2026-06-07T19:06:21.579Z"
   }
 ]

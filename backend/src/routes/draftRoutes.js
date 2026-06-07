@@ -17,7 +17,7 @@ router.post('/draft', async (req, res, next) => {
 
     const cleanQuery = customerQuery.trim();
     const retrievedContext = await searchSupportData(cleanQuery);
-    const draftResult = generateDraft(cleanQuery, retrievedContext);
+    const draftResult = await generateDraft(cleanQuery, retrievedContext);
 
     return res.status(200).json({
       customerQuery: cleanQuery,

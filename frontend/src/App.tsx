@@ -23,15 +23,21 @@ function App() {
   const [notice, setNotice] = useState<Notice | null>(null);
   const [auditError, setAuditError] = useState('');
 
-  async function loadAuditLogs() {
+  async function loadAuditLogs(options = { showError: true }) {
     setIsLoadingAuditLogs(true);
-    setAuditError('');
+
+    if (options.showError) {
+      setAuditError('');
+    }
 
     try {
       const logs = await getAuditLogs();
       setAuditLogs([...logs].reverse());
+      setAuditError('');
     } catch (error) {
-      setAuditError(error instanceof Error ? error.message : 'Could not load audit logs.');
+      if (options.showError) {
+        setAuditError(error instanceof Error ? error.message : 'Could not load audit logs.');
+      }
     } finally {
       setIsLoadingAuditLogs(false);
     }
@@ -49,10 +55,19 @@ function App() {
   }
 
   function addAuditRecordToHistory(auditRecord: AuditLog) {
+    setAuditError('');
     setAuditLogs((currentLogs) => [
       auditRecord,
       ...currentLogs.filter((log) => log.id !== auditRecord.id),
     ]);
+  }
+
+  function handleCustomerQueryChange(value: string) {
+    if (notice?.type === 'error') {
+      setNotice(null);
+    }
+
+    setCustomerQuery(value);
   }
 
   async function handleGenerateDraft(customerQuery: string) {
@@ -90,7 +105,6 @@ function App() {
 
     setIsSavingDecision(true);
     setNotice(null);
-    clearActiveWorkflow();
 
     try {
       const savedAuditRecord = await approveDraft({
@@ -100,8 +114,9 @@ function App() {
         feedback,
       });
       addAuditRecordToHistory(savedAuditRecord);
+      clearActiveWorkflow();
       setNotice({ type: 'success', message: 'Draft approved and saved to the audit log.' });
-      await loadAuditLogs();
+      loadAuditLogs({ showError: false });
     } catch (error) {
       setNotice({
         type: 'error',
@@ -124,7 +139,6 @@ function App() {
 
     setIsSavingDecision(true);
     setNotice(null);
-    clearActiveWorkflow();
 
     try {
       const savedAuditRecord = await rejectDraft({
@@ -133,8 +147,9 @@ function App() {
         feedback,
       });
       addAuditRecordToHistory(savedAuditRecord);
+      clearActiveWorkflow();
       setNotice({ type: 'success', message: 'Draft rejected and saved to the audit log.' });
-      await loadAuditLogs();
+      loadAuditLogs({ showError: false });
     } catch (error) {
       setNotice({
         type: 'error',
@@ -154,11 +169,11 @@ function App() {
           <QueryPanel
             customerQuery={customerQuery}
             isLoading={isGenerating}
-            onCustomerQueryChange={setCustomerQuery}
+            onCustomerQueryChange={handleCustomerQueryChange}
             onGenerateDraft={handleGenerateDraft}
           />
 
-          {notice && (
+          {notice?.type === 'success' && (
             <div className={`notice notice-${notice.type}`} role="status">
               {notice.message}
             </div>

@@ -14,7 +14,7 @@ function formatDate(timestamp: string) {
   }).format(new Date(timestamp));
 }
 
-function AuditLogPanel({ auditLogs, isLoading, error, onRefresh }: AuditLogPanelProps) {
+function AuditLogPanel({ auditLogs, isLoading, onRefresh }: AuditLogPanelProps) {
   return (
     <section className="panel audit-panel">
       <div className="panel-heading">
@@ -27,9 +27,7 @@ function AuditLogPanel({ auditLogs, isLoading, error, onRefresh }: AuditLogPanel
         </button>
       </div>
 
-      {error && <div className="notice notice-error">{error}</div>}
-
-      {!error && !isLoading && !auditLogs.length && <p className="empty-state">No audit records yet.</p>}
+      {!isLoading && !auditLogs.length && <p className="empty-state">No audit records yet.</p>}
 
       <div className="audit-list">
         {auditLogs.map((log) => (

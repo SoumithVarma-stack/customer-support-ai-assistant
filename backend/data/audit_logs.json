@@ -1,0 +1,10 @@
+[
+  {
+    "id": "audit_1780851351555",
+    "customerQuery": "I need help tracking my order",
+    "originalDraft": "Mock draft text",
+    "feedback": "Draft was too generic.",
+    "status": "rejected",
+    "timestamp": "2026-06-07T16:55:51.555Z"
+  }
+]

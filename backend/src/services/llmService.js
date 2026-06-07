@@ -25,6 +25,7 @@ function formatContextForPrompt(retrievedContext) {
 
 function buildSupportDraftPrompt(customerQuery, retrievedContext, confidence) {
   const contextText = formatContextForPrompt(retrievedContext);
+  const hasContext = retrievedContext.length > 0;
 
   return [
     'You are writing a draft response that a support agent can send to the customer after review.',
@@ -40,10 +41,13 @@ function buildSupportDraftPrompt(customerQuery, retrievedContext, confidence) {
     '- Use a polite, professional, empathetic customer support tone.',
     '- Do not invent policy details.',
     '- Do not promise refunds, credits, cancellations, or delivery dates unless the context supports it.',
-    '- If the context is weak or missing, politely say the support team will review the details.',
+    '- If the context is weak or missing, still answer naturally but avoid policy-specific claims.',
+    '- If the customer only sent a greeting, greet them back and ask how support can help.',
+    '- If details are needed, politely say the support team can review the details.',
     '- Keep the response concise and customer-friendly.',
     '',
     `Confidence from retrieval: ${confidence}`,
+    `Retrieved context available: ${hasContext ? 'yes' : 'no'}`,
     '',
     'Customer query:',
     customerQuery,
@@ -55,34 +59,12 @@ function buildSupportDraftPrompt(customerQuery, retrievedContext, confidence) {
   ].join('\n');
 }
 
-function buildGeneralSupportPrompt(customerQuery) {
-  return [
-    'You are writing a draft response that a support agent can send to the customer after review.',
-    'Do not explain your reasoning. Return only the customer-facing message.',
-    '',
-    'Customer-facing response rules:',
-    '- Answer the customer directly.',
-    '- Use a polite, professional, empathetic customer support tone.',
-    '- Keep the response concise and friendly.',
-    '- If the customer only sent a greeting, greet them back and ask how support can help.',
-    '- Do not invent account, order, refund, replacement, cancellation, billing, or delivery details.',
-    '- Do not mention internal context or retrieved documents.',
-    '',
-    'Customer message:',
-    customerQuery,
-    '',
-    'Return only the final customer-facing draft message.',
-  ].join('\n');
-}
-
 async function generateGeminiDraft(customerQuery, retrievedContext, confidence) {
   if (!process.env.GEMINI_API_KEY) {
     return null;
   }
 
-  const prompt = retrievedContext.length
-    ? buildSupportDraftPrompt(customerQuery, retrievedContext, confidence)
-    : buildGeneralSupportPrompt(customerQuery);
+  const prompt = buildSupportDraftPrompt(customerQuery, retrievedContext, confidence);
 
   try {
     const { GoogleGenAI } = await import('@google/genai');
@@ -105,7 +87,6 @@ async function generateGeminiDraft(customerQuery, retrievedContext, confidence) 
 }
 
 module.exports = {
-  buildGeneralSupportPrompt,
   buildSupportDraftPrompt,
   generateGeminiDraft,
 };

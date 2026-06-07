@@ -48,6 +48,13 @@ function App() {
     setFeedback('');
   }
 
+  function addAuditRecordToHistory(auditRecord: AuditLog) {
+    setAuditLogs((currentLogs) => [
+      auditRecord,
+      ...currentLogs.filter((log) => log.id !== auditRecord.id),
+    ]);
+  }
+
   async function handleGenerateDraft(customerQuery: string) {
     setIsGenerating(true);
     setNotice(null);
@@ -86,12 +93,13 @@ function App() {
     clearActiveWorkflow();
 
     try {
-      await approveDraft({
+      const savedAuditRecord = await approveDraft({
         customerQuery: draftResponse.customerQuery,
         originalDraft: draftResponse.draft,
         finalResponse: editedDraft,
         feedback,
       });
+      addAuditRecordToHistory(savedAuditRecord);
       setNotice({ type: 'success', message: 'Draft approved and saved to the audit log.' });
       await loadAuditLogs();
     } catch (error) {
@@ -119,11 +127,12 @@ function App() {
     clearActiveWorkflow();
 
     try {
-      await rejectDraft({
+      const savedAuditRecord = await rejectDraft({
         customerQuery: draftResponse.customerQuery,
         originalDraft: draftResponse.draft,
         feedback,
       });
+      addAuditRecordToHistory(savedAuditRecord);
       setNotice({ type: 'success', message: 'Draft rejected and saved to the audit log.' });
       await loadAuditLogs();
     } catch (error) {

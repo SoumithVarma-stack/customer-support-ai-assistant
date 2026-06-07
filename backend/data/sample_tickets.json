@@ -1,0 +1,37 @@
+[
+  {
+    "id": "ticket_001",
+    "title": "Password reset email not received",
+    "issue": "Customer could not find the password reset email.",
+    "resolution": "Agent asked the customer to check spam and confirmed the correct email address before sending a new reset link.",
+    "tags": ["password", "email", "account"]
+  },
+  {
+    "id": "ticket_002",
+    "title": "Order tracking not updating",
+    "issue": "Customer saw no tracking updates for two days.",
+    "resolution": "Agent explained that carrier scans can be delayed and shared the latest shipment status from the order page.",
+    "tags": ["tracking", "shipping", "order"]
+  },
+  {
+    "id": "ticket_003",
+    "title": "Refund delayed",
+    "issue": "Customer expected a refund but did not see it in their bank account.",
+    "resolution": "Agent confirmed the refund was approved and explained that banks may take several business days to post it.",
+    "tags": ["refund", "billing", "status"]
+  },
+  {
+    "id": "ticket_004",
+    "title": "Order cancellation request",
+    "issue": "Customer wanted to cancel an order after placing it.",
+    "resolution": "Agent checked the order status and cancelled it because it had not been packed yet.",
+    "tags": ["cancellation", "order"]
+  },
+  {
+    "id": "ticket_005",
+    "title": "Shipping address change",
+    "issue": "Customer entered the wrong shipping address.",
+    "resolution": "Agent updated the shipping address because the order had not shipped yet.",
+    "tags": ["shipping", "address", "order"]
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": "faq_001",
+    "title": "Resetting a password",
+    "question": "How can a customer reset their password?",
+    "answer": "Customers can use the forgot password link on the sign in page. They will receive an email with a secure reset link.",
+    "tags": ["password", "account", "login"]
+  },
+  {
+    "id": "faq_002",
+    "title": "Tracking an order",
+    "question": "How can a customer track an order?",
+    "answer": "Customers can track an order from the order history page or by using the tracking link sent in the shipping email.",
+    "tags": ["order", "tracking", "shipping"]
+  },
+  {
+    "id": "faq_003",
+    "title": "Updating billing details",
+    "question": "How can a customer update billing details?",
+    "answer": "Customers can update billing details from account settings under the billing section.",
+    "tags": ["billing", "payment", "account"]
+  },
+  {
+    "id": "faq_004",
+    "title": "Changing shipping address",
+    "question": "Can a customer change the shipping address?",
+    "answer": "Customers can change the shipping address before the order is shipped. After shipping, they should contact the carrier.",
+    "tags": ["shipping", "address", "order"]
+  },
+  {
+    "id": "faq_005",
+    "title": "Finding refund status",
+    "question": "How can a customer check refund status?",
+    "answer": "Customers can check refund status from the order details page. Refunds may take a few business days after approval.",
+    "tags": ["refund", "order", "status"]
+  }
+]

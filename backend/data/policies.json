@@ -1,0 +1,32 @@
+[
+  {
+    "id": "policy_001",
+    "title": "Refund policy",
+    "description": "Refunds are available for eligible orders within 30 days of delivery. The item must be unused and returned in its original condition.",
+    "tags": ["refund", "returns", "eligibility"]
+  },
+  {
+    "id": "policy_002",
+    "title": "Cancellation policy",
+    "description": "Customers can cancel an order before it has been packed for shipment. After packing, the customer may need to request a return.",
+    "tags": ["cancellation", "order", "return"]
+  },
+  {
+    "id": "policy_003",
+    "title": "Shipping policy",
+    "description": "Standard shipping usually takes 3 to 7 business days. Tracking details are shared by email after the order ships.",
+    "tags": ["shipping", "delivery", "tracking"]
+  },
+  {
+    "id": "policy_004",
+    "title": "Account access policy",
+    "description": "For account access issues, customers should reset their password first. Support can help if the reset email does not arrive.",
+    "tags": ["account", "access", "password"]
+  },
+  {
+    "id": "policy_005",
+    "title": "Billing policy",
+    "description": "Billing information can be updated by the customer in account settings. Support should not ask for full card numbers.",
+    "tags": ["billing", "payment", "security"]
+  }
+]

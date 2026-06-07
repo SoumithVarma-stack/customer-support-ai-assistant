@@ -1,4 +1,7 @@
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001';
+const FALLBACK_API_BASE_URL = API_BASE_URL.includes('localhost')
+  ? API_BASE_URL.replace('localhost', '127.0.0.1')
+  : '';
 
 export type RetrievedContext = {
   id: string;
@@ -40,19 +43,33 @@ type RejectPayload = {
   feedback: string;
 };
 
+async function fetchFromApi(baseUrl: string, path: string, options?: RequestInit) {
+  return fetch(`${baseUrl}${path}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      ...options?.headers,
+    },
+    ...options,
+  });
+}
+
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   let response;
 
   try {
-    response = await fetch(`${API_BASE_URL}${path}`, {
-      headers: {
-        'Content-Type': 'application/json',
-        ...options?.headers,
-      },
-      ...options,
-    });
+    response = await fetchFromApi(API_BASE_URL, path, options);
   } catch {
-    throw new Error(`Cannot reach backend at ${API_BASE_URL}. Please check that the backend server is running.`);
+    if (!FALLBACK_API_BASE_URL) {
+      throw new Error(`Cannot reach backend at ${API_BASE_URL}. Please check that the backend server is running.`);
+    }
+
+    try {
+      response = await fetchFromApi(FALLBACK_API_BASE_URL, path, options);
+    } catch {
+      throw new Error(
+        `Cannot reach backend at ${API_BASE_URL} or ${FALLBACK_API_BASE_URL}. Please check that the backend server is running.`,
+      );
+    }
   }
 
   let data: unknown = null;

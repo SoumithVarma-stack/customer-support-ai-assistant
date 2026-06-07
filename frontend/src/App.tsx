@@ -12,6 +12,7 @@ type Notice = {
 };
 
 function App() {
+  const [customerQuery, setCustomerQuery] = useState('');
   const [draftResponse, setDraftResponse] = useState<DraftResponse | null>(null);
   const [editedDraft, setEditedDraft] = useState('');
   const [feedback, setFeedback] = useState('');
@@ -40,9 +41,19 @@ function App() {
     loadAuditLogs();
   }, []);
 
+  function clearActiveWorkflow() {
+    setCustomerQuery('');
+    setDraftResponse(null);
+    setEditedDraft('');
+    setFeedback('');
+  }
+
   async function handleGenerateDraft(customerQuery: string) {
     setIsGenerating(true);
     setNotice(null);
+    setDraftResponse(null);
+    setEditedDraft('');
+    setFeedback('');
 
     try {
       const response = await generateDraft(customerQuery);
@@ -72,6 +83,7 @@ function App() {
 
     setIsSavingDecision(true);
     setNotice(null);
+    clearActiveWorkflow();
 
     try {
       await approveDraft({
@@ -104,6 +116,7 @@ function App() {
 
     setIsSavingDecision(true);
     setNotice(null);
+    clearActiveWorkflow();
 
     try {
       await rejectDraft({
@@ -129,7 +142,12 @@ function App() {
 
       <main className="dashboard-grid">
         <section className="main-column">
-          <QueryPanel onGenerateDraft={handleGenerateDraft} isLoading={isGenerating} />
+          <QueryPanel
+            customerQuery={customerQuery}
+            isLoading={isGenerating}
+            onCustomerQueryChange={setCustomerQuery}
+            onGenerateDraft={handleGenerateDraft}
+          />
 
           {notice && (
             <div className={`notice notice-${notice.type}`} role="status">
